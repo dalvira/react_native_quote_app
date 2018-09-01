@@ -1,0 +1,3 @@
+rootProject.name = 'Quiblio'
+
+include ':app'
