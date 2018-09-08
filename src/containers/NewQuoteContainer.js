@@ -4,9 +4,9 @@ import { StyleSheet, View } from 'react-native';
 
 import { onPressSaveQuote } from '../actions/newQuoteActions';
 
-import NavBar from '../components/NavBar';
+import NewQuote from '../components/NewQuote';
 
-class NavBarContainer extends React.Component {
+class NewQuoteContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,7 +14,7 @@ class NavBarContainer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <NavBar
+        <NewQuote
           modalVisible={this.props.modalVisible}
           onPressSaveQuote={this.props.onPressSaveQuote}
         />
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
 export default connect(
   mapStateToProps,
   { onPressSaveQuote }
-)(NavBar);
+)(NewQuote);

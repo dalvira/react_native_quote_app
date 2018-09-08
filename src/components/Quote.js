@@ -39,7 +39,7 @@ const Quotes = ({}) => {
   );
 };
 
-Quotes.propTypes = {};
+Quote.propTypes = {};
 
 const styles = StyleSheet.create({
   container: {

@@ -39,6 +39,9 @@ const preloadedState = {
         ISBN: '432805748205374824320'
       }
     ]
+  },
+  newQuoteReducer: {
+    modalVisible: true
   }
 };
 

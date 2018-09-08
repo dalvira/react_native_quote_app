@@ -13,6 +13,8 @@ import { Provider } from 'react-redux';
 import store from './src/store';
 
 import MyQuotesContainer from './src/containers/MyQuotesContainer';
+import Profile from './src/components/Profile';
+
 import NavBar from './src/components/NavBar';
 
 console.log(store.getState());
@@ -21,12 +23,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <View style={styles.myQuotesContainer}>
-            <MyQuotesContainer />
-          </View>
-          <View style={styles.navBarContainer}>
-            <NavBar />
-          </View>
+          <NavBar />
         </View>
       </Provider>
     );
@@ -37,13 +34,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#F5FCFF'
   },
   myQuotesContainer: {
     flex: 2
   },
   navBarContainer: {
-    flex: 0.25
+    flex: 0.25,
+    alignItems: 'center',
+    backgroundColor: '#E7C87E'
   }
 });
