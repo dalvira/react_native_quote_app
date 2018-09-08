@@ -41,9 +41,6 @@ const NewQuote = ({ modalVisible, onPressSaveQuote }) => {
         <View style={styles.publishInputContainer}>
           <TextInput placeholder="Enter publish year..." />
         </View>
-        <View style={styles.pageNumInputContainer}>
-          <TextInput placeholder="Enter page number..." />
-        </View>
         <View style={styles.noteInputContainer}>
           <TextInput placeholder="Enter personal note..." />
         </View>
