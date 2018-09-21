@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 
-import { onPressSaveQuote } from '../actions/newQuoteActions';
+import {
+  onPressToggleModal,
+  onPressSaveQuote
+} from '../actions/newQuoteActions';
 
 import NewQuote from '../components/NewQuote';
 
@@ -16,6 +19,7 @@ class NewQuoteContainer extends React.Component {
       <View style={styles.container}>
         <NewQuote
           modalVisible={this.props.modalVisible}
+          onPressToggleModal={this.props.onPressToggleModal}
           onPressSaveQuote={this.props.onPressSaveQuote}
         />
       </View>
@@ -35,5 +39,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onPressSaveQuote }
+  { onPressToggleModal, onPressSaveQuote }
 )(NewQuote);

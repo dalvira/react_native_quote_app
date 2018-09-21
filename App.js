@@ -12,9 +12,6 @@ import { Provider } from 'react-redux';
 
 import store from './src/store';
 
-import MyQuotesContainer from './src/containers/MyQuotesContainer';
-import Profile from './src/components/Profile';
-
 import NavBar from './src/components/NavBar';
 
 console.log(store.getState());

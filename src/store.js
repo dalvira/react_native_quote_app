@@ -41,7 +41,7 @@ const preloadedState = {
     ]
   },
   newQuoteReducer: {
-    modalVisible: true
+    modalVisible: false
   }
 };
 

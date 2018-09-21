@@ -9,10 +9,14 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import { createBottomTabNavigator } from 'react-navigation';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+const NewQuote = ({ modalVisible, onPressToggleModal, onPressSaveQuote }) => {
+  handleOnPressToggleModal = visible => {
+    onPressToggleModal(visible);
+  };
+  handleOnPressNewQuote = visible => {
+    onPressNewQuote(visible);
+  };
 
-const NewQuote = ({ modalVisible, onPressSaveQuote }) => {
   handleOnPressSaveQuote = visible => {
     onPressSaveQuote(visible);
   };
@@ -48,7 +52,7 @@ const NewQuote = ({ modalVisible, onPressSaveQuote }) => {
           <TouchableOpacity>
             <Text
               style={styles.quoteText}
-              onPress={() => handleOnPressSaveQuote(false)}
+              onPress={() => handleOnPressToggleModal(false)}
             >
               Save
             </Text>
