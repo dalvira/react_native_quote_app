@@ -26,7 +26,6 @@ const LogInSignUp = ({
   handleSignUp = () => {
     onPressSignUp();
   };
-  console.log(onChangeEmail);
   return (
     <View style={styles.container}>
       <View style={styles.header}>

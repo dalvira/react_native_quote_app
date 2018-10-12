@@ -14,6 +14,7 @@ import store from './store';
 
 import ModalStackNavigator from './components/NavBar';
 import LogInSignUpContainer from './containers/LogInSignUpContainer';
+import RegisterContainer from './containers/RegisterContainer';
 
 console.log(store.getState());
 export default class App extends Component {
@@ -21,7 +22,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <LogInSignUpContainer />
+          <RegisterContainer />
         </View>
       </Provider>
     );

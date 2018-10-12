@@ -8,78 +8,84 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-const Register = ({
-  onChangeUsername,
-  onChangeEmail,
-  onChangePassword,
-  onPressSignUp
-}) => {
-  handleUsername = text => {
-    onChangeUsername(text);
-  };
+import TextInputCustom from './common/TextInputCustom';
+import ButtonCustom from './common/ButtonCustom';
 
+const Register = ({
+  onChangeEmail,
+  onChangeUsername,
+  onChangePassword,
+  onPressRegister
+}) => {
   handleEmail = text => {
     onChangeEmail(text);
+  };
+
+  handleUsername = text => {
+    onChangeUsername(text);
   };
 
   handlePassword = text => {
     onChangePassword(text);
   };
 
-  handleCancel = () => {};
-
-  handleSignUp = () => {
-    onPressSignUp();
+  handleRegister = () => {
+    onPressRegister();
   };
 
+  const {
+    container,
+    header,
+    titleContainer,
+    title,
+    body,
+    textInputContainer,
+    emailInputContainer,
+    usernameInputContainer,
+    passwordInputContainer,
+    buttonsContainer,
+    cancelButtonContainer,
+    signUpButtonContainer
+  } = styles;
+
   return (
-    <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Quiblio</Text>
-      </View>
-      <View style={styles.usernameInputContainer}>
-        <TextInput
-          style={styles.usernameInput}
-          placeholder={'username'}
-          onChangeText={this.handleUsername}
-          placeholderTextColor="#FFFFFF"
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.emailInputContainer}>
-        <TextInput
-          style={styles.emailInput}
-          placeholder={'username or email'}
-          onChangeText={this.handleEmail}
-          placeholderTextColor="#FFFFFF"
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.passwordInputContainer}>
-        <TextInput
-          style={styles.passwordInput}
-          placeholder={'password'}
-          onChangeText={this.handlePassword}
-          placeholderTextColor="#FFFFFF"
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.buttonsContainer}>
-        <View style={styles.cancelButtonContainer}>
-          <TouchableOpacity
-            style={styles.cancelButton}
-            onPress={this.handleCancel}
-          >
-            <Text style={styles.cancelButtonLabel}>Cancel</Text>
-          </TouchableOpacity>
+    <View style={container}>
+      <View style={header}>
+        <View style={titleContainer}>
+          <Text style={title}>Quiblio</Text>
         </View>
-        <View style={styles.signUpButtonContainer}>
-          <TouchableOpacity
-            style={styles.signUpButton}
-            onPress={this.handleSignUp}
-          >
-            <Text style={styles.signUpButtonLabel}>Sign Up</Text>
-          </TouchableOpacity>
+      </View>
+      <View style={body}>
+        <View style={textInputContainer}>
+          <View style={emailInputContainer}>
+            <TextInputCustom
+              label={'Email'}
+              placeholder={'email'}
+              onChangeText={this.handleEmail}
+              placeholderTextColor="#C3AD79"
+            />
+          </View>
+          <View style={usernameInputContainer}>
+            <TextInputCustom
+              label={'Username'}
+              placeholder={'username'}
+              onChangeText={this.handleUsername}
+              placeholderTextColor="#C3AD79"
+            />
+          </View>
+          <View style={passwordInputContainer}>
+            <TextInputCustom
+              label={'Password'}
+              placeholder={'password'}
+              onChangeText={this.handlePassword}
+              placeholderTextColor="#C3AD79"
+            />
+          </View>
+        </View>
+        <View style={buttonsContainer}>
+          <View style={signUpButtonContainer}>
+            <ButtonCustom label={'Register'} onPress={this.handleRegister} />
+          </View>
         </View>
       </View>
     </View>
@@ -87,61 +93,50 @@ const Register = ({
 };
 
 Register.propTypes = {
-  onChangeUsername: PropTypes.func.isRequired,
   onChangeEmail: PropTypes.func.isRequired,
+  onChangeUsername: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
-  onPressSignUp: PropTypes.func.isRequired
+  onPressRegister: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E7C87E'
+    backgroundColor: '#E7C87E',
+    alignItems: 'center'
+  },
+  header: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   titleContainer: {
-    padding: 15
+    marginTop: 70
   },
   title: {
     fontSize: 48,
     fontWeight: 'bold',
-    color: '#FFFFFF'
+    color: '#F6F8FA'
   },
-  usernameInputContainer: {},
-  usernameInput: {
-    height: 30,
-    fontSize: 24,
-    textAlign: 'center',
-    color: 'white'
+  body: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  emailInputContainer: {},
-  emailInput: {
-    height: 30,
-    fontSize: 24,
-    textAlign: 'center',
-    color: 'white'
+  textInputContainer: {
+    flex: 1
   },
-  passwordInputContainer: {},
-  passwordInput: {
-    height: 30,
-    fontSize: 24,
-    textAlign: 'center',
-    color: 'white'
-  },
+  emailInputContainer: { flex: 1 },
+  usernameInputContainer: { flex: 1 },
+  passwordInputContainer: { flex: 1 },
   buttonsContainer: {
-    flexDirection: 'row'
+    flex: 2,
+    flexDirection: 'row',
+    padding: 20
   },
-  cancelButtonContainer: {},
-  cancelButtonLabel: {
-    fontSize: 24,
-    color: '#907D50'
-  },
-  cancelButton: {},
-  signUpButtonContainer: {},
-  signUpButtonLabel: {
-    fontSize: 24,
-    color: '#907D50'
-  },
-  signUpButton: {}
+  registerButtonContainerStyle: {
+    padding: 20
+  }
 });
 
 export default Register;
