@@ -1,79 +1,86 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { connect } from 'react-redux';
-import { createBottomTabNavigator } from 'react-navigation';
+import { StyleSheet } from 'react-native';
+import {
+  createBottomTabNavigator,
+  createStackNavigator
+} from 'react-navigation';
+
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import MyQuotesContainer from '../containers/MyQuotesContainer';
 import NewQuoteContainer from '../containers/NewQuoteContainer';
-import Profile from './Profile';
+import ProfileContainer from '../containers/ProfileContainer';
+import ModalScreen from './ModalScreen';
 
-import { onPressToggleModal } from '../actions/newQuoteActions';
-class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const HomeStack = createStackNavigator({
+  MyQuotesContainer: MyQuotesContainer
+});
 
-  render() {
-    const TabNav = createBottomTabNavigator(
-      {
-        MyQuotesContainer: {
-          screen: MyQuotesContainer
-        },
-        NewQuoteContainer: {
-          screen: NewQuoteContainer,
-          navigationOptions: {
-            tabBarOnPress: ({ navigation }) => {
-              this.props.onPressToggleModal(true);
-              navigation.navigate('NewQuoteContainer');
-            }
-          }
-        },
-        Profile: { screen: Profile }
-      },
-      {
-        navigationOptions: ({ navigation }) => ({
-          tabBarIcon: ({ focused, tintColor }) => {
-            const { routeName } = navigation.state;
-            let iconName;
-            if (routeName === 'MyQuotesContainer') {
-              iconName = 'format-quote';
-            } else if (routeName === 'NewQuoteContainer') {
-              iconName = 'add-circle-outline';
-            } else if (routeName === 'Profile') {
-              iconName = 'person';
-            }
-            return (
-              <Icon
-                style={styles.iconButton}
-                name={iconName}
-                size={50}
-                color={tintColor}
-              />
-            );
-          }
-        }),
-        tabBarOptions: {
-          activeTintColor: '#907D50',
-          activeBackgroundColor: '#FBF3DE',
-          inactiveTintColor: '#E7C87E',
-          inactiveBackgroundColor: '#FBF3DE',
-          showLabel: false
+const ModalStack = createStackNavigator({
+  ModalScreen: { screen: ModalScreen }
+});
+
+const ProfileStack = createStackNavigator({
+  ProfileContainer: ProfileContainer
+});
+
+const MainTabNavigator = createBottomTabNavigator(
+  {
+    HomeStack: { screen: HomeStack },
+    ModalStack: {
+      screen: ModalStack,
+      navigationOptions: {
+        tabBarOnPress: ({ navigation }) => {
+          navigation.navigate('NewQuoteContainer', {
+            quoteNavigation: navigation
+          });
         }
       }
-    );
-
-    return (
-      <View style={styles.container}>
-        <TabNav />
-      </View>
-    );
+    },
+    ProfileStack: { screen: ProfileStack }
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused, tintColor }) => {
+        const { routeName } = navigation.state;
+        let iconName;
+        if (routeName === 'HomeStack') {
+          iconName = 'format-quote';
+        } else if (routeName === 'ModalStack') {
+          iconName = 'add-circle-outline';
+        } else if (routeName === 'ProfileStack') {
+          iconName = 'person';
+        }
+        return (
+          <Icon
+            style={styles.iconButton}
+            name={iconName}
+            size={50}
+            color={tintColor}
+          />
+        );
+      }
+    }),
+    tabBarOptions: {
+      activeTintColor: '#907D50',
+      activeBackgroundColor: '#FBF3DE',
+      inactiveTintColor: '#E7C87E',
+      inactiveBackgroundColor: '#FBF3DE',
+      showLabel: false
+    }
   }
-}
+);
 
-const mapStateToProps = state => ({
-  modalVisible: state.newQuoteReducer.modalVisible
-});
+const ModalStackNavigator = createStackNavigator(
+  {
+    MainTabNavigator: { screen: MainTabNavigator },
+    NewQuoteContainer: { screen: NewQuoteContainer }
+  },
+  {
+    headerMode: 'none',
+    mode: 'modal'
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -81,7 +88,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(
-  mapStateToProps,
-  { onPressToggleModal }
-)(NavBar);
+export default ModalStackNavigator;

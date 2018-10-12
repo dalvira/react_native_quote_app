@@ -10,9 +10,9 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 
-import store from './src/store';
+import store from './store';
 
-import NavBar from './src/components/NavBar';
+import ModalStackNavigator from './components/NavBar';
 
 console.log(store.getState());
 export default class App extends Component {
@@ -20,7 +20,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <NavBar />
+          <ModalStackNavigator />
         </View>
       </Provider>
     );

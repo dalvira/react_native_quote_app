@@ -4,62 +4,82 @@ import {
   View,
   Text,
   Image,
-  Modal,
   TextInput,
   TouchableOpacity
 } from 'react-native';
 
-const NewQuote = ({ modalVisible, onPressToggleModal, onPressSaveQuote }) => {
-  handleOnPressToggleModal = visible => {
-    onPressToggleModal(visible);
-  };
-  handleOnPressNewQuote = visible => {
-    onPressNewQuote(visible);
+const NewQuote = ({ navigation, onPressSaveQuote }) => {
+  handleOnPressCancelNewQuote = () => {
+    navigation.goBack();
   };
 
-  handleOnPressSaveQuote = visible => {
-    onPressSaveQuote(visible);
+  handleOnPressSaveQuote = () => {
+    navigation.goBack();
   };
 
   return (
-    <Modal animationType="slide" visible={modalVisible}>
-      <View style={styles.container}>
-        <View style={styles.bookImageContainer}>
-          <Text>Book Image</Text>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.bookImageContainer}>
+        <Text>Book Image</Text>
+      </View>
+      <View style={styles.inputsContainer}>
         <View style={styles.quoteInputContainer}>
-          <TextInput placeholder="Enter quote..." />
+          <TextInput style={styles.textInput} placeholder="Enter quote..." />
         </View>
         <View style={styles.paraNumInputContainer}>
-          <TextInput placeholder="Enter paragraph number..." />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter paragraph number..."
+          />
         </View>
         <View style={styles.pageNumInputContainer}>
-          <TextInput placeholder="Enter page number..." />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter page number..."
+          />
         </View>
         <View style={styles.bookInputContainer}>
-          <TextInput placeholder="Enter book title..." />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter book title..."
+          />
         </View>
         <View style={styles.authorInputContainer}>
-          <TextInput placeholder="Enter author name..." />
-        </View>
-        <View style={styles.publishInputContainer}>
-          <TextInput placeholder="Enter publish year..." />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter author name..."
+          />
         </View>
         <View style={styles.noteInputContainer}>
-          <TextInput placeholder="Enter personal note..." />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter personal note..."
+          />
+        </View>
+      </View>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.cancelButtonContainer}>
+          <TouchableOpacity>
+            <Text
+              style={styles.quoteText}
+              onPress={() => handleOnPressCancelNewQuote()}
+            >
+              Cancel
+            </Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.saveButtonContainer}>
           <TouchableOpacity>
             <Text
               style={styles.quoteText}
-              onPress={() => handleOnPressToggleModal(false)}
+              onPress={() => handleOnPressSaveQuote()}
             >
               Save
             </Text>
           </TouchableOpacity>
         </View>
       </View>
-    </Modal>
+    </View>
   );
 };
 
@@ -72,8 +92,22 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   bookImageContainer: {
-    paddingTop: 25
-  }
+    flex: 1,
+    marginTop: 25
+  },
+  inputsContainer: {
+    flex: 1.75
+  },
+  textInput: {
+    fontSize: 24,
+    padding: 5
+  },
+  buttonsContainer: {
+    flex: 0.25,
+    flexDirection: 'row'
+  },
+  cancelButtonContainer: {},
+  saveButtonContainer: {}
 });
 
 export default NewQuote;

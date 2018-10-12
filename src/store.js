@@ -40,9 +40,7 @@ const preloadedState = {
       }
     ]
   },
-  newQuoteReducer: {
-    modalVisible: false
-  }
+  newQuoteReducer: {}
 };
 
 const middleware = [thunk];

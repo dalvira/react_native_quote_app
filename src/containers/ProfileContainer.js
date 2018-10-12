@@ -2,25 +2,27 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 
-import { onPressSaveQuote } from '../actions/newQuoteActions';
+import { onPressEditProfile } from '../actions/profileActions';
 
-import NewQuote from '../components/NewQuote';
-class NewQuoteContainer extends React.Component {
+import Profile from '../components/Profile';
+
+class ProfileContainer extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    console.log(this.props.navigation);
     return (
       <View style={styles.container}>
-        <NewQuote onPressSaveQuote={this.props.onPressSaveQuote} />
+        <Profile onPressEditProfile={this.props.onPressEditProfile} />
       </View>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  modalVisible: state.newQuoteReducer.modalVisible
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -30,5 +32,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onPressSaveQuote }
-)(NewQuote);
+  { onPressEditProfile }
+)(Profile);
