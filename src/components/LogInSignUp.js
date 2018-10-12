@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
+
+import TextInputCustom from './common/TextInputCustom';
+import ButtonCustom from './common/ButtonCustom';
 
 const LogInSignUp = ({
   onChangeEmail,
@@ -29,46 +26,40 @@ const LogInSignUp = ({
   handleSignUp = () => {
     onPressSignUp();
   };
-
+  console.log(onChangeEmail);
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Quiblio</Text>
-      </View>
-      <View style={styles.emailInputContainer}>
-        <TextInput
-          style={styles.emailInput}
-          placeholder={'username or email'}
-          onChangeText={this.handleEmail}
-          placeholderTextColor="#FFFFFF"
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.passwordInputContainer}>
-        <TextInput
-          style={styles.passwordInput}
-          placeholder={'password'}
-          onChangeText={this.handlePassword}
-          placeholderTextColor="#FFFFFF"
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.buttonsContainer}>
-        <View style={styles.logInButtonContainer}>
-          <TouchableOpacity
-            style={styles.logInButton}
-            onPress={this.handleLogIn}
-          >
-            <Text style={styles.logInButtonLabel}>Log In</Text>
-          </TouchableOpacity>
+      <View style={styles.header}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Quiblio</Text>
         </View>
-        <View style={styles.signUpButtonContainer}>
-          <TouchableOpacity
-            style={styles.signUpButton}
-            onPress={this.handleSignUp}
-          >
-            <Text style={styles.signUpButtonLabel}>Sign Up</Text>
-          </TouchableOpacity>
+      </View>
+      <View style={styles.body}>
+        <View style={styles.textInputContainer}>
+          <View style={styles.emailInputContainer}>
+            <TextInputCustom
+              label="Email"
+              placeholder={'name@email.com'}
+              onChangeText={this.handleEmail}
+              placeholderTextColor="#C3AD79"
+            />
+          </View>
+          <View style={styles.passwordInputContainer}>
+            <TextInputCustom
+              label="Password"
+              placeholder={'password'}
+              onChangeText={this.handlePassword}
+              placeholderTextColor="#C3AD79"
+            />
+          </View>
+        </View>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.logInButtonContainer}>
+            <ButtonCustom label={'Log In'} onPress={this.handleLogIn} />
+          </View>
+          <View style={styles.signUpButtonContainer}>
+            <ButtonCustom label={'Sign Up'} onPress={this.handleSignUp} />
+          </View>
         </View>
       </View>
     </View>
@@ -85,45 +76,43 @@ LogInSignUp.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E7C87E'
+    backgroundColor: '#E7C87E',
+    alignItems: 'center'
+  },
+  header: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   titleContainer: {
-    padding: 15
+    marginTop: 70
   },
   title: {
     fontSize: 48,
     fontWeight: 'bold',
-    color: '#FFFFFF'
+    color: '#F6F8FA'
   },
-  emailInputContainer: {},
-  emailInput: {
-    height: 30,
-    fontSize: 24,
-    textAlign: 'center',
-    color: 'white'
+  body: {
+    flex: 2,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
-  passwordInputContainer: {},
-  passwordInput: {
-    height: 30,
-    fontSize: 24,
-    textAlign: 'center',
-    color: 'white'
+  textInputContainer: {
+    flex: 1
   },
+  emailInputContainer: { flex: 1 },
+  passwordInputContainer: { flex: 1 },
   buttonsContainer: {
-    flexDirection: 'row'
+    flex: 2,
+    flexDirection: 'row',
+    padding: 20
   },
-  logInButtonContainer: {},
-  logInButtonLabel: {
-    fontSize: 24,
-    color: '#907D50'
+  logInButtonContainer: {
+    padding: 20
   },
-  logInButton: {},
-  signUpButtonContainer: {},
-  signUpButtonLabel: {
-    fontSize: 24,
-    color: '#907D50'
-  },
-  signUpButton: {}
+  signUpButtonContainer: {
+    padding: 20
+  }
 });
 
 export default LogInSignUp;

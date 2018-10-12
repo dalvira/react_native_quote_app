@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 import ModalStackNavigator from './components/NavBar';
+import LogInSignUpContainer from './containers/LogInSignUpContainer';
 
 console.log(store.getState());
 export default class App extends Component {
@@ -20,7 +21,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={styles.container}>
-          <ModalStackNavigator />
+          <LogInSignUpContainer />
         </View>
       </Provider>
     );
