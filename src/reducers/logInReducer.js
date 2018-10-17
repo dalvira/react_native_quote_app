@@ -1,16 +1,14 @@
 import {
   ON_CHANGE_EMAIL,
-  ON_CHANGE_NAME,
   ON_CHANGE_PASSWORD,
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  REGISTER
+  LOG_IN_SUCCESS,
+  LOG_IN_FAIL,
+  LOG_IN
 } from '../actions/logInActions';
 
 const initialState = {
   email: '',
   password: '',
-  name: '',
   user: '',
   loading: '',
   error: ''
@@ -30,29 +28,22 @@ export default function(state = initialState, action) {
         password: action.payload.text
       };
     }
-    case ON_CHANGE_NAME: {
-      return {
-        ...state,
-        username: action.payload.text
-      };
-    }
-    case REGISTER: {
+    case LOG_IN: {
       return {
         ...state,
         loading: true,
         error: ''
       };
     }
-    case REGISTER_SUCCESS: {
+    case LOG_IN_SUCCESS: {
       return {
         ...state,
         user: action.payload.user,
-        name: action.payload.name,
         loading: false,
         error: ''
       };
     }
-    case REGISTER_FAIL: {
+    case LOG_IN_FAIL: {
       return {
         ...state,
         error: 'Log in failed. Try again.',

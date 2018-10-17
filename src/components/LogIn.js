@@ -1,47 +1,29 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 
 import TextInputCustom from './common/TextInputCustom';
 import ButtonCustom from './common/ButtonCustom';
 import SpinnerCustom from './common/SpinnerCustom';
 
-const Register = ({
+const LogIn = ({
   navigation,
-  name,
   email,
   password,
   loading,
   error,
   onChangeEmail,
   onChangePassword,
-  onChangeName,
-  onPressRegister
+  onPressLogIn
 }) => {
   const {
     container,
     header,
     title,
-    body,
-    textInputContainer,
-    emailInputContainer,
-    nameInputContainer,
-    passwordInputContainer,
-    buttonsContainer,
-    registerButtonContainerStyle,
-    cancelButtonContainer,
-    cancelLink
+    accountQuestion,
+    signUpLink,
+    errorStyle
   } = styles;
-
-  handleName = text => {
-    onChangeName(text);
-  };
 
   handleEmail = text => {
     onChangeEmail(text);
@@ -51,12 +33,12 @@ const Register = ({
     onChangePassword(text);
   };
 
-  handleRegister = () => {
-    onPressRegister(email, password, name);
+  handleLogIn = () => {
+    onPressLogIn(email, password);
   };
 
-  handleCancel = () => {
-    navigation.goBack();
+  handleSignUp = () => {
+    navigation.navigate('RegisterContainer');
   };
 
   renderSpinner = () => {
@@ -78,42 +60,38 @@ const Register = ({
   return (
     <View style={container}>
       <View style={header}>
+        {/* <View style={styles.titleContainer}> */}
         <Text style={title}>Quiblio</Text>
+        {/* </View> */}
       </View>
-      <View style={body}>
-        <View style={textInputContainer}>
-          <View style={nameInputContainer}>
+      <View style={styles.body}>
+        <View style={styles.textInputContainer}>
+          <View style={styles.emailInputContainer}>
             <TextInputCustom
-              label={'NAME'}
-              placeholder={'Jacob'}
-              onChangeText={this.handleName}
-              placeholderTextColor="#C8CED1"
-            />
-          </View>
-          <View style={emailInputContainer}>
-            <TextInputCustom
-              label={'EMAIL'}
+              label="EMAIL"
               placeholder={'example@gmail.com'}
               onChangeText={this.handleEmail}
               placeholderTextColor="#C8CED1"
             />
           </View>
-          <View style={passwordInputContainer}>
+          <View style={styles.passwordInputContainer}>
             <TextInputCustom
-              label={'PASSWORD'}
+              label="PASSWORD"
               placeholder={'password1'}
               onChangeText={this.handlePassword}
               placeholderTextColor="#C8CED1"
+              secureTextEntry={true}
             />
           </View>
         </View>
-        <View style={buttonsContainer}>
-          <View style={registerButtonContainerStyle}>
-            <ButtonCustom label={'Register'} onPress={this.handleRegister} />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.logInButtonContainer}>
+            <ButtonCustom label={'Log In'} onPress={this.handleLogIn} />
           </View>
-          <View style={cancelButtonContainer}>
-            <Text style={cancelLink} onPress={this.handleCancel}>
-              Cancel
+          <View style={styles.signUpOptionContainer}>
+            <Text style={accountQuestion}>Don't have an account yet? </Text>
+            <Text style={signUpLink} onPress={this.handleSignUp}>
+              Sign Up
             </Text>
           </View>
         </View>
@@ -126,11 +104,10 @@ const Register = ({
   );
 };
 
-Register.propTypes = {
-  onChangeName: PropTypes.func.isRequired,
+LogIn.propTypes = {
   onChangeEmail: PropTypes.func.isRequired,
   onChangePassword: PropTypes.func.isRequired,
-  onPressRegister: PropTypes.func.isRequired
+  onPressLogIn: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -153,38 +130,42 @@ const styles = StyleSheet.create({
     color: '#F6F8FA'
   },
   body: {
-    flex: 3,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch'
   },
   textInputContainer: {
-    flex: 4,
-    alignSelf: 'stretch',
-    paddingBottom: 5
+    flex: 1.5,
+    alignSelf: 'stretch'
   },
-  nameInputContainer: { flex: 1 },
   emailInputContainer: { flex: 1 },
   passwordInputContainer: { flex: 1 },
   buttonsContainer: {
-    flex: 2.2,
+    flex: 1,
     alignSelf: 'stretch'
   },
-  registerButtonContainerStyle: {
-    flex: 1
+  logInButtonContainer: {
+    flex: 0.4
   },
-  cancelButtonContainer: {
-    flex: 1,
-    alignItems: 'flex-end',
-    marginRight: 40
+  signUpOptionContainer: {
+    flex: 0.4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 10
   },
-  cancelLink: {
+  accountQuestion: {
+    color: '#FFFFFF',
+    fontSize: 18
+  },
+  signUpLink: {
     color: '#FFFFFF',
     fontWeight: '700',
     fontSize: 18
   },
   footer: {
-    flex: 0.7,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
@@ -195,4 +176,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Register;
+export default LogIn;

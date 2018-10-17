@@ -5,7 +5,8 @@ const TextInputCustom = ({
   label,
   placeholder,
   placeholderTextColor,
-  onChangeText
+  onChangeText,
+  secureTextEntry
 }) => {
   const {
     container,
@@ -17,18 +18,19 @@ const TextInputCustom = ({
 
   return (
     <View style={container}>
-      <View style={labelContainerStyle}>
-        <Text style={labelStyle}>{label}</Text>
-      </View>
-      <View style={textInputContainerStyle}>
-        <TextInput
-          style={textInputStyle}
-          placeholder={placeholder}
-          placeholderTextColor={placeholderTextColor}
-          onChangeText={onChangeText}
-          autoCapitalize="none"
-        />
-      </View>
+      {/* <View style={labelContainerStyle}> */}
+      <Text style={labelStyle}>{label}</Text>
+      {/* </View> */}
+      {/* <View style={textInputContainerStyle}> */}
+      <TextInput
+        style={textInputStyle}
+        placeholder={placeholder}
+        placeholderTextColor={placeholderTextColor}
+        onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
+        autoCapitalize="none"
+      />
+      {/* </View> */}
     </View>
   );
 };
@@ -36,25 +38,28 @@ const TextInputCustom = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    marginLeft: 30,
+    marginRight: 30,
+    // backgroundColor: 'green',
+    alignSelf: 'stretch'
   },
   labelContainerStyle: {},
   labelStyle: {
-    fontSize: 18,
-    color: '#907D50'
+    fontSize: 14,
+    color: '#FFFFFF',
+    fontWeight: '500'
   },
   textInputContainerStyle: {
-    paddingLeft: 10
+    // paddingLeft: 10
   },
   textInputStyle: {
+    // alignSelf: 'stretch',
     height: 30,
-    width: 220,
+    // width: 220,
     fontSize: 18,
-    color: 'white',
+    color: '#FFFFFF',
     borderBottomWidth: 0.8,
-    borderColor: '#907D50'
+    borderColor: '#FFFFFF'
   }
 });
 

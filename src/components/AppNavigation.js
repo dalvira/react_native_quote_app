@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import {
   createBottomTabNavigator,
-  createStackNavigator
+  createStackNavigator,
+  createSwitchNavigator
 } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,6 +12,18 @@ import MyQuotesContainer from '../containers/MyQuotesContainer';
 import NewQuoteContainer from '../containers/NewQuoteContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 import ModalScreen from './ModalScreen';
+import LogInContainer from '../containers/LogInContainer';
+import RegisterContainer from '../containers/RegisterContainer';
+
+const AuthStack = createStackNavigator(
+  {
+    LogInContainer: LogInContainer,
+    RegisterContainer: RegisterContainer
+  },
+  {
+    headerMode: 'none'
+  }
+);
 
 const HomeStack = createStackNavigator({
   MyQuotesContainer: MyQuotesContainer
@@ -82,10 +95,21 @@ const ModalStackNavigator = createStackNavigator(
   }
 );
 
+const SwitchNav = createSwitchNavigator(
+  {
+    // AuthLoading: AuthLoadingScreen,
+    ModalStackNavigator: ModalStackNavigator,
+    AuthStack: AuthStack
+  },
+  {
+    // initialRouteName: 'AuthLoading'
+  }
+);
+
 const styles = StyleSheet.create({
   container: {
     flex: 1
   }
 });
 
-export default ModalStackNavigator;
+export default AuthStack;

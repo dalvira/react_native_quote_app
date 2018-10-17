@@ -14,25 +14,24 @@ const ButtonCustom = ({ label, onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: 110,
-    shadowOffset: { width: 1, height: 3 },
-    shadowColor: 'black',
-    shadowOpacity: 0.2
-  },
+  container: { height: 50 },
   buttonStyle: {
+    flex: 1,
+    alignSelf: 'stretch',
     alignItems: 'center',
-    backgroundColor: '#907D50',
-    borderRadius: 17,
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingLeft: 14,
-    paddingRight: 14
+    justifyContent: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    marginLeft: 30,
+    marginRight: 30,
+    shadowOffset: { width: 1, height: 3 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.2
   },
   labelStyle: {
     fontSize: 20,
-    color: '#F6F8FA'
+    color: '#0094C8',
+    fontWeight: 'bold'
   }
 });
 

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 
 import {
+  onChangeName,
   onChangeEmail,
-  onChangeUsername,
   onChangePassword,
   onPressRegister
 } from '../actions/registerActions';
@@ -19,8 +19,13 @@ class RegisterContainer extends React.Component {
     return (
       <View style={styles.container}>
         <Register
+          name={this.props.name}
+          email={this.props.email}
+          password={this.props.password}
+          loading={this.props.loading}
+          error={this.props.error}
           onChangeEmail={this.props.onChangeEmail}
-          onChangeUsername={this.props.onChangeUsername}
+          onChangeName={this.props.onChangeName}
           onChangePassword={this.props.onChangePassword}
           onPressRegister={this.props.onPressRegister}
         />
@@ -29,7 +34,13 @@ class RegisterContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  name: state.registerReducer.name,
+  email: state.registerReducer.email,
+  password: state.registerReducer.password,
+  loading: state.registerReducer.loading,
+  error: state.registerReducer.error
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -39,5 +50,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onChangeEmail, onChangeUsername, onChangePassword, onPressRegister }
+  { onChangeName, onChangeEmail, onChangePassword, onPressRegister }
 )(Register);

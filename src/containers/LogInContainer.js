@@ -5,12 +5,12 @@ import { StyleSheet, View } from 'react-native';
 import {
   onChangeEmail,
   onChangePassword,
-  onPressLogIn,
-  onPressSignUp
-} from '../actions/logInSignUpActions';
+  onPressLogIn
+} from '../actions/logInActions';
 
-import LogInSignUp from '../components/LogInSignUp';
-class LogInSignUpContainer extends React.Component {
+import LogIn from '../components/LogIn';
+
+class LogInContainer extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,7 +18,11 @@ class LogInSignUpContainer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <LogInSignUp
+        <LogIn
+          email={this.props.email}
+          password={this.props.password}
+          loading={this.props.loading}
+          error={this.props.error}
           onChangeEmail={this.props.onChangeEmail}
           onChangePassword={this.props.onChangePassword}
           onPressLogIn={this.props.onPressLogIn}
@@ -29,7 +33,12 @@ class LogInSignUpContainer extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  email: state.logInReducer.email,
+  password: state.logInReducer.password,
+  loading: state.logInReducer.loading,
+  error: state.logInReducer.error
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -39,5 +48,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onChangeEmail, onChangePassword, onPressLogIn, onPressSignUp }
-)(LogInSignUp);
+  { onChangeEmail, onChangePassword, onPressLogIn }
+)(LogIn);
