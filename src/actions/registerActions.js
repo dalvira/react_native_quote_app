@@ -2,7 +2,7 @@ import firebase from 'firebase';
 
 export const ON_CHANGE_EMAIL = 'ON_CHANGE_EMAIL';
 export const ON_CHANGE_PASSWORD = 'ON_CHANGE_PASSWORD';
-export const ON_CHANGE_NAME = 'ON_CHANGE_EMAIL';
+export const ON_CHANGE_NAME = 'ON_CHANGE_NAME';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const REGISTER = 'REGISTER';

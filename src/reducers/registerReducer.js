@@ -1,6 +1,6 @@
 import {
-  ON_CHANGE_EMAIL,
   ON_CHANGE_NAME,
+  ON_CHANGE_EMAIL,
   ON_CHANGE_PASSWORD,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -18,6 +18,12 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case ON_CHANGE_NAME: {
+      return {
+        ...state,
+        username: action.payload.text
+      };
+    }
     case ON_CHANGE_EMAIL: {
       return {
         ...state,
@@ -28,12 +34,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         password: action.payload.text
-      };
-    }
-    case ON_CHANGE_NAME: {
-      return {
-        ...state,
-        username: action.payload.text
       };
     }
     case REGISTER: {
