@@ -40,15 +40,18 @@ export default function(state = initialState, action) {
         ...state,
         user: action.payload.user,
         loading: false,
-        error: ''
+        error: 'Success',
+        password: '',
+        email: ''
       };
     }
     case LOG_IN_FAIL: {
       return {
         ...state,
-        error: 'Log in failed. Try again.',
+        error: 'Invalid Email/Password',
         loading: false,
-        password: ''
+        password: '',
+        email: ''
       };
     }
     default:

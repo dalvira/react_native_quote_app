@@ -10,6 +10,7 @@ const LogIn = ({
   navigation,
   email,
   password,
+  user,
   loading,
   error,
   onChangeEmail,
@@ -34,7 +35,7 @@ const LogIn = ({
   };
 
   handleLogIn = () => {
-    onPressLogIn(email, password);
+    onPressLogIn(email, password, navigation);
   };
 
   handleSignUp = () => {

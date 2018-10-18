@@ -28,13 +28,14 @@ export function onChangeName(text) {
   };
 }
 
-export function onPressRegister(email, password, name) {
+export function onPressRegister(email, password, name, navigation) {
   return dispatch => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(user => {
         registerSuccess(dispatch, user, name);
+        navigation.navigate('ModalStackNavigator');
       })
       .catch(() => registerFail(dispatch));
   };

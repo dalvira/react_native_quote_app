@@ -14,16 +14,7 @@ import ProfileContainer from '../containers/ProfileContainer';
 import ModalScreen from './ModalScreen';
 import LogInContainer from '../containers/LogInContainer';
 import RegisterContainer from '../containers/RegisterContainer';
-
-const AuthStack = createStackNavigator(
-  {
-    LogInContainer: LogInContainer,
-    RegisterContainer: RegisterContainer
-  },
-  {
-    headerMode: 'none'
-  }
-);
+import AuthLoading from '../components/AuthLoading';
 
 const HomeStack = createStackNavigator({
   MyQuotesContainer: MyQuotesContainer
@@ -95,14 +86,24 @@ const ModalStackNavigator = createStackNavigator(
   }
 );
 
+const AuthStack = createStackNavigator(
+  {
+    LogInContainer: LogInContainer,
+    RegisterContainer: RegisterContainer
+  },
+  {
+    headerMode: 'none'
+  }
+);
+
 const SwitchNav = createSwitchNavigator(
   {
-    // AuthLoading: AuthLoadingScreen,
+    AuthLoading: AuthLoading,
     ModalStackNavigator: ModalStackNavigator,
     AuthStack: AuthStack
   },
   {
-    // initialRouteName: 'AuthLoading'
+    initialRouteName: 'AuthLoading'
   }
 );
 
@@ -112,4 +113,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AuthStack;
+export default SwitchNav;

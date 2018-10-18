@@ -21,6 +21,7 @@ class LogInContainer extends React.Component {
         <LogIn
           email={this.props.email}
           password={this.props.password}
+          user={this.props.user}
           loading={this.props.loading}
           error={this.props.error}
           onChangeEmail={this.props.onChangeEmail}
@@ -36,6 +37,7 @@ class LogInContainer extends React.Component {
 const mapStateToProps = state => ({
   email: state.logInReducer.email,
   password: state.logInReducer.password,
+  user: state.logInReducer.user,
   loading: state.logInReducer.loading,
   error: state.logInReducer.error
 });

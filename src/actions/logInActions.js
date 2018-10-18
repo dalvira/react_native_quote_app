@@ -20,7 +20,7 @@ export function onChangePassword(text) {
   };
 }
 
-export function onPressLogIn(email, password) {
+export function onPressLogIn(email, password, navigation) {
   return dispatch => {
     dispatch({ type: LOG_IN });
     firebase
@@ -28,6 +28,7 @@ export function onPressLogIn(email, password) {
       .signInWithEmailAndPassword(email, password)
       .then(user => {
         logInSuccess(dispatch, user);
+        navigation.navigate('ModalStackNavigator');
       })
       .catch(() => logInFail(dispatch));
   };

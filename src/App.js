@@ -20,6 +20,7 @@ import RegisterContainer from './containers/RegisterContainer';
 import AuthStack from './components/AppNavigation';
 import AuthLoading from './components/AuthLoading';
 import Register from './components/Register';
+import SwitchNav from './components/AppNavigation';
 
 console.log(store.getState());
 export default class App extends Component {
@@ -33,7 +34,8 @@ export default class App extends Component {
           {/* <ModalStackNavigator /> */}
           {/* <LogInContainer /> */}
           {/* <RegisterContainer /> */}
-          <AuthStack />
+          {/* <AuthStack /> */}
+          <SwitchNav />
           {/* <AuthLoading /> */}
           {/* <Register /> */}
         </View>

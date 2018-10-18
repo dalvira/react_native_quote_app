@@ -52,7 +52,7 @@ const Register = ({
   };
 
   handleRegister = () => {
-    onPressRegister(email, password, name);
+    onPressRegister(email, password, name, navigation);
   };
 
   handleCancel = () => {
