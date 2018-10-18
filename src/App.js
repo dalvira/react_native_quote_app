@@ -21,6 +21,7 @@ import AuthStack from './components/AppNavigation';
 import AuthLoading from './components/AuthLoading';
 import Register from './components/Register';
 import SwitchNav from './components/AppNavigation';
+import Profile from './components/Profile';
 
 console.log(store.getState());
 export default class App extends Component {
@@ -36,6 +37,7 @@ export default class App extends Component {
           {/* <RegisterContainer /> */}
           {/* <AuthStack /> */}
           <SwitchNav />
+          {/* <Profile /> */}
           {/* <AuthLoading /> */}
           {/* <Register /> */}
         </View>

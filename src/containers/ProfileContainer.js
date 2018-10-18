@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 
-import { onPressEditProfile } from '../actions/profileActions';
+import { onPressEditProfile, onPressSignOut } from '../actions/profileActions';
 
 import Profile from '../components/Profile';
 
@@ -14,15 +14,16 @@ class ProfileContainer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Profile onPressEditProfile={this.props.onPressEditProfile} />
+        <Profile
+          onPressEditProfile={this.props.onPressEditProfile}
+          onPressSignOut={this.props.onPressSignOut}
+        />
       </View>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  modalVisible: state.newQuoteReducer.modalVisible
-});
+const mapStateToProps = state => ({});
 
 const styles = StyleSheet.create({
   container: {
@@ -32,5 +33,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onPressEditProfile }
+  { onPressEditProfile, onPressSignOut }
 )(Profile);

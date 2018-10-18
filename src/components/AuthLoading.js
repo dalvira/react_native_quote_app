@@ -1,4 +1,3 @@
-import firebase from 'firebase';
 import React from 'react';
 import { connect } from 'react-redux';
 

@@ -16,17 +16,27 @@ import LogInContainer from '../containers/LogInContainer';
 import RegisterContainer from '../containers/RegisterContainer';
 import AuthLoading from '../components/AuthLoading';
 
-const HomeStack = createStackNavigator({
-  MyQuotesContainer: MyQuotesContainer
-});
+const HomeStack = createStackNavigator(
+  {
+    MyQuotesContainer: MyQuotesContainer
+  },
+  {
+    headerMode: 'none'
+  }
+);
 
 const ModalStack = createStackNavigator({
   ModalScreen: { screen: ModalScreen }
 });
 
-const ProfileStack = createStackNavigator({
-  ProfileContainer: ProfileContainer
-});
+const ProfileStack = createStackNavigator(
+  {
+    ProfileContainer: ProfileContainer
+  },
+  {
+    headerMode: 'none'
+  }
+);
 
 const MainTabNavigator = createBottomTabNavigator(
   {
@@ -59,17 +69,17 @@ const MainTabNavigator = createBottomTabNavigator(
           <Icon
             style={styles.iconButton}
             name={iconName}
-            size={50}
+            size={35}
             color={tintColor}
           />
         );
       }
     }),
     tabBarOptions: {
-      activeTintColor: '#907D50',
-      activeBackgroundColor: '#FBF3DE',
-      inactiveTintColor: '#E7C87E',
-      inactiveBackgroundColor: '#FBF3DE',
+      activeTintColor: '#00688D',
+      activeBackgroundColor: '#0094C8',
+      inactiveTintColor: '#FFFFFF',
+      inactiveBackgroundColor: '#0094C8',
       showLabel: false
     }
   }

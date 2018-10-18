@@ -4,52 +4,65 @@ import { StyleSheet, View, Text, Image } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const Profile = ({}) => {
+import ButtonCustom from './common/ButtonCustom';
+
+const Profile = ({ navigation, onPressSignOut }) => {
+  const {
+    container,
+    nameContainer,
+    numOfQuotesGroupContainer,
+    mostQuotedAuthorGroupContainer,
+    numOfNotesGroupContainer,
+    labelContainer,
+    dataContainer,
+    name,
+    label,
+    data,
+    signOutButtonContainer,
+    signOutButton
+  } = styles;
+
   handleOnPressEditProfile = () => {
-    alert('Pressed');
+    alert('Edit Profile');
+  };
+
+  handleSignOut = () => {
+    onPressSignOut(navigation);
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.profilePhotoContainer}>
-        <Text>Photo</Text>
+    <View style={container}>
+      <View style={nameContainer}>
+        <Text style={name}>Jacob</Text>
       </View>
-      <View style={styles.usernameContainer}>
-        <Text>Username</Text>
-      </View>
-      {/* <View style={styles.editProfileButtonContainer}>
-        <Icon.Button
-          style={styles.myQuotesButton}
-          name="edit"
-          size={24}
-          backgroundColor="#E7C87E"
-          underlayColor="rgba(0, 0, 0, 0)"
-          onPress={() => handleOnPressEditProfile()}
-        />
-      </View> */}
-      <View style={styles.numOfQuotesGroupContainer}>
-        <View style={styles.numOfQuotesLabelContainer}>
-          <Text>Quotes</Text>
+      <View style={numOfQuotesGroupContainer}>
+        <View style={labelContainer}>
+          <Text style={label}>Quotes</Text>
         </View>
-        <View style={styles.numOfQuotesLabelContainer}>
-          <Text>26</Text>
+        <View style={dataContainer}>
+          <Text style={data}>26</Text>
         </View>
       </View>
-      <View style={styles.mostQuotedAuthorGroupContainer}>
-        <View style={styles.mostQuotedAuthorLabelContainer}>
-          <Text>Most Quoted Author</Text>
+      <View style={mostQuotedAuthorGroupContainer}>
+        <View style={labelContainer}>
+          <Text style={label}>Most Quoted Author</Text>
         </View>
-        <View style={styles.mostQuotedAuthorContainer}>
-          <Text>Robert Greene</Text>
+        <View style={dataContainer}>
+          <Text style={data}>Robert Greene</Text>
         </View>
       </View>
-      <View style={styles.numOfNotesGroupContainer}>
-        <View style={styles.numOfNotesLabelContainer}>
-          <Text>Notes</Text>
+      <View style={numOfNotesGroupContainer}>
+        <View style={labelContainer}>
+          <Text style={label}>Notes</Text>
         </View>
-        <View style={styles.numOfNotesContainer}>
-          <Text>14</Text>
+        <View style={dataContainer}>
+          <Text style={data}>14</Text>
         </View>
+      </View>
+      <View style={signOutButtonContainer}>
+        <Text style={signOutButton} onPress={this.handleSignOut}>
+          Sign Out
+        </Text>
       </View>
     </View>
   );
@@ -60,13 +73,38 @@ Profile.propTypes = {};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FBF3DE',
+    backgroundColor: '#EFEFEF',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  nameContainer: {
+    flex: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  numOfQuotesGroupContainer: {
+    flex: 1,
     alignItems: 'center'
   },
-  profilePhotoContainer: {
-    paddingTop: 25
+  mostQuotedAuthorGroupContainer: {
+    flex: 1,
+    alignItems: 'center'
   },
-  myQuotesButton: {}
+  numOfNotesGroupContainer: {
+    flex: 1,
+    alignItems: 'center'
+  },
+  labelContainer: {},
+  dataContainer: { paddingTop: 5 },
+  name: { fontSize: 22, color: '#0094C8', fontWeight: 'bold' },
+  label: { fontSize: 18, color: '#0094C8', fontWeight: '700' },
+  data: { fontSize: 20, color: '#0094C8' },
+  signOutButtonContainer: {
+    flex: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  signOutButton: { fontSize: 20, color: '#0094C8' }
 });
 
 export default Profile;
