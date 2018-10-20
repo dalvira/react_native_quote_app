@@ -40,12 +40,25 @@ export function onPressRegister(
       .auth()
       .createUserWithEmailAndPassword(emailRegister, passwordRegister)
       .then(user => {
+        const currentUser = user.user;
+        currentUser.displayName = nameRegister;
+        writeUserData(currentUser.uid, nameRegister, currentUser.email);
         registerSuccess(dispatch, user);
         navigation.navigate('ModalStackNavigator');
       })
       .catch(() => registerFail(dispatch));
   };
 }
+
+const writeUserData = (userId, name, email) => {
+  firebase
+    .database()
+    .ref('users/' + userId)
+    .set({
+      username: name,
+      email: email
+    });
+};
 
 const registerSuccess = (dispatch, user) => {
   dispatch({
