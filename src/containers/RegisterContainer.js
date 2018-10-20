@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 
 import {
-  onChangeName,
-  onChangeEmail,
-  onChangePassword,
+  onChangeNameRegister,
+  onChangeEmailRegister,
+  onChangePasswordRegister,
   onPressRegister
 } from '../actions/registerActions';
 
@@ -19,14 +19,14 @@ class RegisterContainer extends React.Component {
     return (
       <View style={styles.container}>
         <Register
-          name={this.props.name}
-          email={this.props.email}
-          password={this.props.password}
-          loading={this.props.loading}
-          error={this.props.error}
-          onChangeEmail={this.props.onChangeEmail}
-          onChangeName={this.props.onChangeName}
-          onChangePassword={this.props.onChangePassword}
+          nameRegister={this.props.nameRegister}
+          emailRegister={this.props.emailRegister}
+          passwordRegister={this.props.passwordRegister}
+          loadingRegister={this.props.loadingRegister}
+          errorRegister={this.props.errorRegister}
+          onChangeNameRegister={this.props.onChangeNameRegister}
+          onChangeEmailRegister={this.props.onChangeEmailRegister}
+          onChangePasswordRegister={this.props.onChangePasswordRegister}
           onPressRegister={this.props.onPressRegister}
         />
       </View>
@@ -35,11 +35,11 @@ class RegisterContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  name: state.registerReducer.name,
-  email: state.registerReducer.email,
-  password: state.registerReducer.password,
-  loading: state.registerReducer.loading,
-  error: state.registerReducer.error
+  nameRegister: state.registerReducer.nameRegister,
+  emailRegister: state.registerReducer.emailRegister,
+  passwordRegister: state.registerReducer.passwordRegister,
+  loadingRegister: state.registerReducer.loadingRegister,
+  errorRegister: state.registerReducer.errorRegister
 });
 
 const styles = StyleSheet.create({
@@ -50,5 +50,10 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onChangeName, onChangeEmail, onChangePassword, onPressRegister }
+  {
+    onChangeNameRegister,
+    onChangeEmailRegister,
+    onChangePasswordRegister,
+    onPressRegister
+  }
 )(Register);

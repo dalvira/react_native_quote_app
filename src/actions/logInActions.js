@@ -1,31 +1,31 @@
 import firebase from 'firebase';
 
-export const ON_CHANGE_EMAIL = 'ON_CHANGE_EMAIL';
-export const ON_CHANGE_PASSWORD = 'ON_CHANGE_PASSWORD';
+export const ON_CHANGE_EMAIL_LOG_IN = 'ON_CHANGE_EMAIL_LOG_IN';
+export const ON_CHANGE_PASSWORD_LOG_IN = 'ON_CHANGE_PASSWORD_LOG_IN';
+export const LOG_IN = 'LOG_IN';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAIL = 'LOG_IN_FAIL';
-export const LOG_IN = 'LOG_IN';
 
-export function onChangeEmail(text) {
+export function onChangeEmailLogIn(text) {
   return {
-    type: ON_CHANGE_EMAIL,
+    type: ON_CHANGE_EMAIL_LOG_IN,
     payload: { text: text }
   };
 }
 
-export function onChangePassword(text) {
+export function onChangePasswordLogIn(text) {
   return {
-    type: ON_CHANGE_PASSWORD,
+    type: ON_CHANGE_PASSWORD_LOG_IN,
     payload: { text: text }
   };
 }
 
-export function onPressLogIn(email, password, navigation) {
+export function onPressLogIn(navigation, emailLogIn, passwordLogIn) {
   return dispatch => {
     dispatch({ type: LOG_IN });
     firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(emailLogIn, passwordLogIn)
       .then(user => {
         logInSuccess(dispatch, user);
         navigation.navigate('ModalStackNavigator');

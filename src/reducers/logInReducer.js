@@ -1,57 +1,60 @@
 import {
-  ON_CHANGE_EMAIL,
-  ON_CHANGE_PASSWORD,
+  ON_CHANGE_EMAIL_LOG_IN,
+  ON_CHANGE_PASSWORD_LOG_IN,
+  LOG_IN,
   LOG_IN_SUCCESS,
-  LOG_IN_FAIL,
-  LOG_IN
+  LOG_IN_FAIL
 } from '../actions/logInActions';
 
 const initialState = {
-  email: '',
-  password: '',
-  user: '',
-  loading: '',
-  error: ''
+  emailLogIn: '',
+  passwordLogIn: '',
+  loadingLogIn: '',
+  errorLogIn: ''
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ON_CHANGE_EMAIL: {
+    case ON_CHANGE_EMAIL_LOG_IN: {
+      console.log(action);
       return {
         ...state,
-        email: action.payload.text
+        emailLogIn: action.payload.text
       };
     }
-    case ON_CHANGE_PASSWORD: {
+    case ON_CHANGE_PASSWORD_LOG_IN: {
+      console.log(action);
       return {
         ...state,
-        password: action.payload.text
+        passwordLogIn: action.payload.text
       };
     }
     case LOG_IN: {
+      console.log(action);
       return {
         ...state,
-        loading: true,
-        error: ''
+        loadingLogIn: true,
+        errorLogIn: ''
       };
     }
     case LOG_IN_SUCCESS: {
+      console.log(action);
       return {
         ...state,
-        user: action.payload.user,
-        loading: false,
-        error: 'Success',
-        password: '',
-        email: ''
+        emailLogIn: '',
+        passwordLogIn: '',
+        loadingLogIn: false,
+        errorLogIn: ''
       };
     }
     case LOG_IN_FAIL: {
+      console.log(action);
       return {
         ...state,
-        error: 'Invalid Email/Password',
-        loading: false,
-        password: '',
-        email: ''
+        emailLogIn: '',
+        passwordLogIn: '',
+        loadingLogIn: false,
+        errorLogIn: 'Invalid Email/Password'
       };
     }
     default:

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
 
 import {
-  onChangeEmail,
-  onChangePassword,
+  onChangeEmailLogIn,
+  onChangePasswordLogIn,
   onPressLogIn
 } from '../actions/logInActions';
 
@@ -19,13 +19,12 @@ class LogInContainer extends React.Component {
     return (
       <View style={styles.container}>
         <LogIn
-          email={this.props.email}
-          password={this.props.password}
-          user={this.props.user}
-          loading={this.props.loading}
-          error={this.props.error}
-          onChangeEmail={this.props.onChangeEmail}
-          onChangePassword={this.props.onChangePassword}
+          emailLogIn={this.props.emailLogIn}
+          passwordLogIn={this.props.passwordLogIn}
+          loadingLogIn={this.props.loadingLogIn}
+          errorLogIn={this.props.errorLogIn}
+          onChangeEmailLogIn={this.props.onChangeEmailLogIn}
+          onChangePasswordLogIn={this.props.onChangePasswordLogIn}
           onPressLogIn={this.props.onPressLogIn}
           onPressSignUp={this.props.onPressSignUp}
         />
@@ -35,11 +34,10 @@ class LogInContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  email: state.logInReducer.email,
-  password: state.logInReducer.password,
-  user: state.logInReducer.user,
-  loading: state.logInReducer.loading,
-  error: state.logInReducer.error
+  emailLogIn: state.logInReducer.emailLogIn,
+  passwordLogIn: state.logInReducer.passwordLogIn,
+  loadingLogIn: state.logInReducer.loadingLogIn,
+  errorLogIn: state.logInReducer.errorLogIn
 });
 
 const styles = StyleSheet.create({
@@ -50,5 +48,5 @@ const styles = StyleSheet.create({
 
 export default connect(
   mapStateToProps,
-  { onChangeEmail, onChangePassword, onPressLogIn }
+  { onChangeEmailLogIn, onChangePasswordLogIn, onPressLogIn }
 )(LogIn);

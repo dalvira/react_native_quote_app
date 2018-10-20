@@ -8,13 +8,12 @@ import SpinnerCustom from './common/SpinnerCustom';
 
 const LogIn = ({
   navigation,
-  email,
-  password,
-  user,
-  loading,
-  error,
-  onChangeEmail,
-  onChangePassword,
+  emailLogIn,
+  passwordLogIn,
+  loadingLogIn,
+  errorLogIn,
+  onChangeEmailLogIn,
+  onChangePasswordLogIn,
   onPressLogIn
 }) => {
   const {
@@ -27,15 +26,15 @@ const LogIn = ({
   } = styles;
 
   handleEmail = text => {
-    onChangeEmail(text);
+    onChangeEmailLogIn(text);
   };
 
   handlePassword = text => {
-    onChangePassword(text);
+    onChangePasswordLogIn(text);
   };
 
   handleLogIn = () => {
-    onPressLogIn(email, password, navigation);
+    onPressLogIn(navigation, emailLogIn, passwordLogIn);
   };
 
   handleSignUp = () => {
@@ -43,16 +42,16 @@ const LogIn = ({
   };
 
   renderSpinner = () => {
-    if (loading) {
+    if (loadingLogIn) {
       return <SpinnerCustom size="large" color="#FFFFFF" />;
     }
   };
 
   renderError = () => {
-    if (error) {
+    if (errorLogIn) {
       return (
         <View>
-          <Text style={errorStyle}>{error}</Text>
+          <Text style={errorStyle}>{errorLogIn}</Text>
         </View>
       );
     }
@@ -61,9 +60,7 @@ const LogIn = ({
   return (
     <View style={container}>
       <View style={header}>
-        {/* <View style={styles.titleContainer}> */}
         <Text style={title}>Quiblio</Text>
-        {/* </View> */}
       </View>
       <View style={styles.body}>
         <View style={styles.textInputContainer}>
@@ -72,7 +69,7 @@ const LogIn = ({
               label="EMAIL"
               placeholder={'example@gmail.com'}
               onChangeText={this.handleEmail}
-              placeholderTextColor="#C8CED1"
+              placeholderTextColor="#D9DBDB"
             />
           </View>
           <View style={styles.passwordInputContainer}>
@@ -80,7 +77,7 @@ const LogIn = ({
               label="PASSWORD"
               placeholder={'password1'}
               onChangeText={this.handlePassword}
-              placeholderTextColor="#C8CED1"
+              placeholderTextColor="#D9DBDB"
               secureTextEntry={true}
             />
           </View>
@@ -106,8 +103,8 @@ const LogIn = ({
 };
 
 LogIn.propTypes = {
-  onChangeEmail: PropTypes.func.isRequired,
-  onChangePassword: PropTypes.func.isRequired,
+  onChangeEmailLogIn: PropTypes.func.isRequired,
+  onChangePasswordLogIn: PropTypes.func.isRequired,
   onPressLogIn: PropTypes.func.isRequired
 };
 

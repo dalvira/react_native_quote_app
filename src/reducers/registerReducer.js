@@ -1,63 +1,60 @@
 import {
-  ON_CHANGE_NAME,
-  ON_CHANGE_EMAIL,
-  ON_CHANGE_PASSWORD,
+  ON_CHANGE_NAME_REGISTER,
+  ON_CHANGE_EMAIL_REGISTER,
+  ON_CHANGE_PASSWORD_REGISTER,
+  REGISTER,
   REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  REGISTER
-} from '../actions/logInActions';
+  REGISTER_FAIL
+} from '../actions/registerActions';
 
 const initialState = {
-  email: '',
-  password: '',
-  name: '',
-  user: '',
-  loading: '',
-  error: ''
+  nameRegister: '',
+  emailRegister: '',
+  passwordRegister: '',
+  loadingRegister: '',
+  errorRegister: ''
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case ON_CHANGE_NAME: {
+    case ON_CHANGE_NAME_REGISTER: {
       return {
         ...state,
-        username: action.payload.text
+        nameRegister: action.payload.text
       };
     }
-    case ON_CHANGE_EMAIL: {
+    case ON_CHANGE_EMAIL_REGISTER: {
       return {
         ...state,
-        email: action.payload.text
+        emailRegister: action.payload.text
       };
     }
-    case ON_CHANGE_PASSWORD: {
+    case ON_CHANGE_PASSWORD_REGISTER: {
       return {
         ...state,
-        password: action.payload.text
+        passwordRegister: action.payload.text
       };
     }
     case REGISTER: {
       return {
         ...state,
-        loading: true,
-        error: ''
+        loadingRegister: true,
+        errorRegister: ''
       };
     }
     case REGISTER_SUCCESS: {
       return {
         ...state,
-        user: action.payload.user,
-        name: action.payload.name,
-        loading: false,
-        error: ''
+        loadingRegister: false,
+        errorRegister: ''
       };
     }
     case REGISTER_FAIL: {
       return {
         ...state,
-        error: 'Log in failed. Try again.',
-        loading: false,
-        password: ''
+        loadingRegister: false,
+        errorRegister: 'Register failed. Try again.',
+        passwordRegister: ''
       };
     }
     default:

@@ -14,14 +14,14 @@ import SpinnerCustom from './common/SpinnerCustom';
 
 const Register = ({
   navigation,
-  name,
-  email,
-  password,
-  loading,
-  error,
-  onChangeEmail,
-  onChangePassword,
-  onChangeName,
+  nameRegister,
+  emailRegister,
+  passwordRegister,
+  loadingRegister,
+  errorRegister,
+  onChangeEmailRegister,
+  onChangePasswordRegister,
+  onChangeNameRegister,
   onPressRegister
 }) => {
   const {
@@ -40,19 +40,19 @@ const Register = ({
   } = styles;
 
   handleName = text => {
-    onChangeName(text);
+    onChangeNameRegister(text);
   };
 
   handleEmail = text => {
-    onChangeEmail(text);
+    onChangeEmailRegister(text);
   };
 
   handlePassword = text => {
-    onChangePassword(text);
+    onChangePasswordRegister(text);
   };
 
   handleRegister = () => {
-    onPressRegister(email, password, name, navigation);
+    onPressRegister(navigation, nameRegister, emailRegister, passwordRegister);
   };
 
   handleCancel = () => {
@@ -60,16 +60,16 @@ const Register = ({
   };
 
   renderSpinner = () => {
-    if (loading) {
+    if (loadingRegister) {
       return <SpinnerCustom size="large" color="#FFFFFF" />;
     }
   };
 
   renderError = () => {
-    if (error) {
+    if (errorRegister) {
       return (
         <View>
-          <Text style={errorStyle}>{error}</Text>
+          <Text style={errorStyle}>{errorRegister}</Text>
         </View>
       );
     }
@@ -85,9 +85,9 @@ const Register = ({
           <View style={nameInputContainer}>
             <TextInputCustom
               label={'NAME'}
-              placeholder={'Jacob'}
+              placeholder={'Karen Kelley'}
               onChangeText={this.handleName}
-              placeholderTextColor="#C8CED1"
+              placeholderTextColor="#D9DBDB"
             />
           </View>
           <View style={emailInputContainer}>
@@ -95,7 +95,7 @@ const Register = ({
               label={'EMAIL'}
               placeholder={'example@gmail.com'}
               onChangeText={this.handleEmail}
-              placeholderTextColor="#C8CED1"
+              placeholderTextColor="#D9DBDB"
             />
           </View>
           <View style={passwordInputContainer}>
@@ -103,7 +103,8 @@ const Register = ({
               label={'PASSWORD'}
               placeholder={'password1'}
               onChangeText={this.handlePassword}
-              placeholderTextColor="#C8CED1"
+              placeholderTextColor="#D9DBDB"
+              secureTextEntry={true}
             />
           </View>
         </View>
@@ -127,9 +128,9 @@ const Register = ({
 };
 
 Register.propTypes = {
-  onChangeName: PropTypes.func.isRequired,
-  onChangeEmail: PropTypes.func.isRequired,
-  onChangePassword: PropTypes.func.isRequired,
+  onChangeNameRegister: PropTypes.func.isRequired,
+  onChangeEmailRegister: PropTypes.func.isRequired,
+  onChangePasswordRegister: PropTypes.func.isRequired,
   onPressRegister: PropTypes.func.isRequired
 };
 
