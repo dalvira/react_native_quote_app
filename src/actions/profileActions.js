@@ -23,6 +23,8 @@ export function onPressSignOut(navigation) {
   };
 }
 
+export function retrieveUserData() {}
+
 const signOutSuccess = dispatch => {
   dispatch({
     type: SIGN_OUT_SUCCESS,

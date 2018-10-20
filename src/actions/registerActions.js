@@ -55,7 +55,7 @@ const writeUserData = (userId, name, email) => {
     .database()
     .ref('users/' + userId)
     .set({
-      username: name,
+      name: name,
       email: email
     });
 };
