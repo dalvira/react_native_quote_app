@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import ButtonCustom from './common/ButtonCustom';
 
-const Profile = ({ navigation, onPressSignOut }) => {
+const Profile = ({ navigation, name, onPressSignOut }) => {
   const {
     container,
     nameContainer,
@@ -15,7 +15,7 @@ const Profile = ({ navigation, onPressSignOut }) => {
     numOfNotesGroupContainer,
     labelContainer,
     dataContainer,
-    name,
+    nameStyle,
     label,
     data,
     signOutButtonContainer,
@@ -33,7 +33,7 @@ const Profile = ({ navigation, onPressSignOut }) => {
   return (
     <View style={container}>
       <View style={nameContainer}>
-        <Text style={name}>Jacob</Text>
+        <Text style={nameStyle}>{name}</Text>
       </View>
       <View style={numOfQuotesGroupContainer}>
         <View style={labelContainer}>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   labelContainer: {},
   dataContainer: { paddingTop: 5 },
-  name: { fontSize: 22, color: '#0094C8', fontWeight: 'bold' },
+  nameStyle: { fontSize: 22, color: '#0094C8', fontWeight: 'bold' },
   label: { fontSize: 18, color: '#0094C8', fontWeight: '700' },
   data: { fontSize: 20, color: '#0094C8' },
   signOutButtonContainer: {
