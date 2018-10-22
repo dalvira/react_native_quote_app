@@ -69,6 +69,12 @@ export default function(state = initialState, action) {
     case SAVE_QUOTE_SUCCESS: {
       return {
         ...state,
+        quoteNew: '',
+        paraNew: '',
+        pageNew: '',
+        titleNew: '',
+        authorNew: '',
+        noteNew: '',
         loadingSave: false,
         errorSave: ''
       };
