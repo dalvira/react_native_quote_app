@@ -69,6 +69,7 @@ export function onPressSaveQuote(
       .ref(`/users/${currentUser.uid}/quotes`)
       .push({ quote, para, page, title, author, note });
     saveQuoteSuccess(dispatch);
+    navigation.goBack();
   };
 }
 
