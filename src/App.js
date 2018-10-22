@@ -22,6 +22,8 @@ import AuthLoading from './components/AuthLoading';
 import Register from './components/Register';
 import SwitchNav from './components/AppNavigation';
 import Profile from './components/Profile';
+import NewQuoteContainer from './containers/NewQuoteContainer';
+import NewQuote from './components/NewQuote';
 
 console.log(store.getState());
 export default class App extends Component {
@@ -37,6 +39,8 @@ export default class App extends Component {
           {/* <RegisterContainer /> */}
           {/* <AuthStack /> */}
           <SwitchNav />
+          {/* <NewQuoteContainer /> */}
+          {/* <NewQuote /> */}
           {/* <Profile /> */}
           {/* <AuthLoading /> */}
           {/* <Register /> */}

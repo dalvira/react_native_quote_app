@@ -6,7 +6,9 @@ const TextInputCustom = ({
   placeholder,
   placeholderTextColor,
   onChangeText,
-  secureTextEntry
+  secureTextEntry,
+  multiline,
+  keyboardType
 }) => {
   const {
     container,
@@ -29,6 +31,8 @@ const TextInputCustom = ({
         onChangeText={onChangeText}
         secureTextEntry={secureTextEntry}
         autoCapitalize="none"
+        multiline={multiline}
+        keyboardType={keyboardType}
       />
       {/* </View> */}
     </View>
