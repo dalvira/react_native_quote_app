@@ -13,10 +13,13 @@ const MyQuotes = ({ quoteObjArr, onPressQuote, onDeleteQuote }) => {
     <View style={styles.quoteButtonContainer} key={quoteObj.id}>
       <TouchableOpacity>
         <View style={styles.quoteTextContainer}>
+          {/* <Text style={styles.quoteMarks}>"</Text> */}
           <Text style={styles.quoteText}>"{quoteObj.text}"</Text>
+          {/* <Text style={styles.quoteMarks}>"</Text> */}
         </View>
         <View style={styles.quoteAuthorContainer}>
-          <Text style={styles.quoteAuthor}>-{quoteObj.author}</Text>
+          <Text style={styles.authorDash}>-</Text>
+          <Text style={styles.quoteAuthor}>{quoteObj.author}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -46,32 +49,42 @@ MyQuotes.propTypes = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FBF3DE',
+    backgroundColor: '#F3F3F3',
     paddingTop: 25
   },
   quoteTextContainer: {
     flex: 3,
-    alignItems: 'center'
+    flexDirection: 'row'
   },
   quoteAuthorContainer: {
     flex: 1,
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    flexDirection: 'row'
   },
   buttonsContainer: {
     flexDirection: 'row'
   },
   quoteButtonContainer: {
     borderBottomWidth: 1,
-    borderColor: '#E7C87E',
-    flexDirection: 'column'
+    borderColor: '#0094C8',
+    flexDirection: 'column',
+    margin: 5
   },
   quoteText: {
-    fontSize: 24,
-    color: '#907D50'
+    fontSize: 22,
+    color: '#838383'
   },
   quoteAuthor: {
     fontSize: 18,
-    color: '#907D50'
+    color: '#838383'
+  },
+  authorDash: {
+    fontSize: 18,
+    color: '#0094C8'
+  },
+  quoteMarks: {
+    fontSize: 22,
+    color: '#0094C8'
   }
 });
 

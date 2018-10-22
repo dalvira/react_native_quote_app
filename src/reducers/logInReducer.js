@@ -16,21 +16,18 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case ON_CHANGE_EMAIL_LOG_IN: {
-      console.log(action);
       return {
         ...state,
         emailLogIn: action.payload.text
       };
     }
     case ON_CHANGE_PASSWORD_LOG_IN: {
-      console.log(action);
       return {
         ...state,
         passwordLogIn: action.payload.text
       };
     }
     case LOG_IN: {
-      console.log(action);
       return {
         ...state,
         loadingLogIn: true,
@@ -38,7 +35,6 @@ export default function(state = initialState, action) {
       };
     }
     case LOG_IN_SUCCESS: {
-      console.log(action);
       return {
         ...state,
         emailLogIn: '',
@@ -48,7 +44,6 @@ export default function(state = initialState, action) {
       };
     }
     case LOG_IN_FAIL: {
-      console.log(action);
       return {
         ...state,
         emailLogIn: '',

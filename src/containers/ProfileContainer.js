@@ -5,7 +5,6 @@ import { StyleSheet, View } from 'react-native';
 import { onPressEditProfile, onPressSignOut } from '../actions/profileActions';
 
 import Profile from '../components/Profile';
-
 class ProfileContainer extends React.Component {
   constructor(props) {
     super(props);

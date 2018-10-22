@@ -9,7 +9,6 @@ import {
 } from '../actions/logInActions';
 
 import LogIn from '../components/LogIn';
-
 class LogInContainer extends React.Component {
   constructor(props) {
     super(props);

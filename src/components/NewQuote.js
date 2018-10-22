@@ -84,7 +84,6 @@ const NewQuote = ({
       authorNew,
       noteNew
     );
-    // navigation.goBack();
   };
 
   renderSpinner = () => {
